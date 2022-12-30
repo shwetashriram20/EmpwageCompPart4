@@ -14,15 +14,20 @@ namespace NonStaticEmployeewangProg
             const int IS_PART_TIME = 2;
             int EMP_RATE_PER_HOUR = 20;
             const int NUM_OF_WORKING_DAYS = 20;
+            const int MAX_HRS_IN_MONTH = 100;
 
 
             int empHrs = 0;
             int empWage = 0;
+            int totalEmpHrs = 0;
             int totalEmpWage = 0;
+            int totalWorkingDays = 0;
 
 
-            for (int i = 0; i < NUM_OF_WORKING_DAYS; i++)
+
+            while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
             {
+                totalWorkingDays++;
 
                 Random random = new Random();
                 int empCheck = random.Next(3);
@@ -40,9 +45,12 @@ namespace NonStaticEmployeewangProg
                         break;
 
                 }
-
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hrs: " + empHrs);
             }
+
+            totalEmpWage = totalEmpWage * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Total Employee Wage " + totalEmpWage);
         }
     }
 }
-
