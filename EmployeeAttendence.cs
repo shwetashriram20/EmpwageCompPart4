@@ -10,36 +10,38 @@ namespace NonStaticEmployeewangProg
     {
         public void CheckAttendence()
         {
-            int IS_FULL_TIME = 10;
-            int IS_PART_TIME = 2;
+            const int IS_FULL_TIME = 1;
+            const int IS_PART_TIME = 2;
             int EMP_RATE_PER_HOUR = 20;
+            const int NUM_OF_WORKING_DAYS = 20;
+
 
             int empHrs = 0;
             int empWage = 0;
-
-            Random random = new Random();
-            int empCheck = random.Next(3);
+            int totalEmpWage = 0;
 
 
-            if (empCheck == IS_FULL_TIME)
+            for (int i = 0; i < NUM_OF_WORKING_DAYS; i++)
             {
-                Console.WriteLine("Employee is Present");
-                empHrs = 8;
-            }
-            else if (empCheck == IS_PART_TIME)
-            {
-                Console.WriteLine("Employee is Absent");
-                empHrs = 0;
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
-                empHrs = 0;
+
+                Random random = new Random();
+                int empCheck = random.Next(3);
+
+                switch (empCheck)
+                {
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
+
+                }
 
             }
-            empWage = empHrs * EMP_RATE_PER_HOUR;
-
-            Console.WriteLine("Emp  Wage " + empWage);
         }
     }
 }
